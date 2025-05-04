@@ -81,7 +81,7 @@ public class NativeFitsLoader : INativeFitsLoader
     /// In this folder, some modifications were made to make them compatible with Linux GCC
     /// 
     ///
-    private const string FitsLoaderWrapperLibraryPath = @"/home/arthur/Work/Software/FitsRatingTool/NativeFitsLoader/build/libFitsLoaderWrapper.so";
+    private const string FitsLoaderWrapperLibraryPath = @"libNativeFitsLoader.so";
     
     [DllImport(FitsLoaderWrapperLibraryPath, EntryPoint = "LoadFit", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
     private static extern FitsHandle LoadFitNative([MarshalAs(UnmanagedType.LPStr)] string file, long maxInputSize, int maxWidth, int maxHeight);
