@@ -1,0 +1,120 @@
+<!--
+FITS Rating Tool
+Copyright (C) 2022 TheCyberBrick
+    
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+    
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+    
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <https://www.gnu.org/licenses/>.
+-->
+
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:imaging="using:Avalonia.Visuals.Media.Imaging"
+             xmlns:controls="clr-namespace:FitsRatingTool.GuiApp.UI.Controls"
+             xmlns:views="clr-namespace:FitsRatingTool.GuiApp.UI.FitsImage.Views"
+             xmlns:vm="using:FitsRatingTool.GuiApp.UI.FitsImage.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="950" d:DesignHeight="450"
+             x:Class="FitsRatingTool.GuiApp.UI.FitsImage.Views.FitsImageMultiViewerView">
+
+  <Design.DataContext>
+    <vm:FitsImageMultiViewerViewModel/>
+  </Design.DataContext>
+
+  <controls:ScrollableTabControl
+               Items="{Binding Instances}"
+               SelectedItem="{Binding SelectedInstance}"
+               SelectedContent="{Binding SelectedInstance}"
+               Padding="2">
+
+    <controls:ScrollableTabControl.Styles>
+      <Style Selector="controls|ScrollableTabControl Button.tabCloseButton">
+        <Setter Property="IsVisible" Value="False"/>
+      </Style>
+      <Style Selector="controls|ScrollableTabControl TabItem:pointerover Button.tabCloseButton">
+        <Setter Property="IsVisible" Value="{Binding IsCloseable}"/>
+      </Style>
+      <Style Selector="controls|ScrollableTabControl TabItem:selected Button.tabCloseButton">
+        <Setter Property="IsVisible" Value="{Binding IsCloseable}"/>
+      </Style>
+      <Style Selector="controls|ScrollableTabControl Button.tabCloseButton PathIcon.tabCloseButtonIcon">
+        <Setter Property="Foreground" Value="#FFCECECE"/>
+      </Style>
+      <Style Selector="controls|ScrollableTabControl Button.tabCloseButton PathIcon.tabCloseButtonIcon:pointerover">
+        <Setter Property="Foreground" Value="#FFFFFFFF"/>
+      </Style>
+    </controls:ScrollableTabControl.Styles>
+
+    <TabControl.ItemsPanel>
+      <ItemsPanelTemplate>
+        <ReversibleStackPanel ReverseOrder="False" Orientation="Horizontal"/>
+      </ItemsPanelTemplate>
+    </TabControl.ItemsPanel>
+
+    <TabControl.ItemTemplate>
+      <DataTemplate>
+        <Grid ColumnDefinitions="*,Auto"
+              controls:ClickAction.Button="Middle"
+              controls:ClickAction.Command="{Binding Close}">
+          <TextBlock Grid.Column="0"
+                     Text="{Binding Viewer.FileName, FallbackValue=..., TargetNullValue=...}"
+                     Padding="6 0">
+            <ToolTip.Tip>
+              <TextBlock Text="{Binding Viewer.File, FallbackValue=..., TargetNullValue=...}"/>
+            </ToolTip.Tip>
+          </TextBlock>
+          <Panel Grid.Column="1"
+                 Width="13" Height="13"
+                 IsVisible="{Binding IsCloseable}"
+                 VerticalAlignment="Bottom">
+            <Button Classes="tabCloseButton"
+                    Margin="0"
+                    Padding="0"
+                    BorderThickness="0"
+                    Background="Transparent"
+                    Command="{Binding Close}"
+                    VerticalAlignment="Bottom">
+              <Viewbox>
+                <PathIcon Classes="tabCloseButtonIcon"
+                          Data="M 800 0 l 0 0 h -220 l -180 165 l -180 -165 h -220 l 300 275 l -300 275 h 220 l 180 -165 l 180 165 h 220 l -300 -275 z"/>
+              </Viewbox>
+            </Button>
+          </Panel>
+        </Grid>
+      </DataTemplate>
+    </TabControl.ItemTemplate>
+
+    <TabControl.ContentTemplate>
+      <DataTemplate>
+        <ContentControl Content="{Binding Viewer}">
+          <ContentControl.ContentTemplate>
+            <DataTemplate>
+              <Border Classes="themed"
+                      Padding="3"
+                      Background="#FF383838">
+                <Panel ClipToBounds="True">
+
+                  <!-- Directly using the view here so that zoom etc. isn't lost when changing image -->
+                  <views:FitsImageViewerView/>
+
+                </Panel>
+              </Border>
+            </DataTemplate>
+          </ContentControl.ContentTemplate>
+        </ContentControl>
+      </DataTemplate>
+    </TabControl.ContentTemplate>
+
+  </controls:ScrollableTabControl>
+
+</UserControl>

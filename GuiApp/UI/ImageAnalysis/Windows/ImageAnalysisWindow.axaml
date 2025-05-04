@@ -1,0 +1,150 @@
+<!--
+FITS Rating Tool
+Copyright (C) 2022 TheCyberBrick
+    
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+    
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+    
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <https://www.gnu.org/licenses/>.
+-->
+
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="using:FitsRatingTool.GuiApp.UI.App.ViewModels"
+        xmlns:views="clr-namespace:FitsRatingTool.GuiApp.UI.ImageAnalysis.Views"
+        xmlns:controls="clr-namespace:FitsRatingTool.GuiApp.UI.Controls"
+        xmlns:system="clr-namespace:System;assembly=mscorlib"
+        xmlns:collections="clr-namespace:System.Collections;assembly=mscorlib"
+        mc:Ignorable="d" d:DesignWidth="700" d:DesignHeight="400"
+        Width="700" Height="400"
+        UseLayoutRounding="True"
+        x:Class="FitsRatingTool.GuiApp.UI.ImageAnalysis.Windows.ImageAnalysisWindow"
+        Icon="/Assets/Icons/magnifying_glass.png"
+        Title="Image Analysis"
+        Foreground="#FFECECEC"
+        FontFamily="Tahoma"
+        FontSize="10.5"
+        WindowStartupLocation="CenterOwner"
+        Topmost="True"
+        Classes="pinnable"
+        Padding="0">
+
+  <Window.Styles>
+    <Style Selector="Window">
+      <Setter Property="controls:WindowExtensions.TitleIcon">
+        <Template>
+          <Image Source="/Assets/Icons/magnifying_glass.png"/>
+        </Template>
+      </Setter>
+    </Style>
+  </Window.Styles>
+
+  <Grid ColumnDefinitions="*,4,Auto"
+        Margin="4">
+
+    <Border Grid.Column="0"
+            Background="#FF383838"
+            Classes="themed"
+            Padding="8 4 4 4">
+      <views:ImageAnalysisView DataContext="{Binding .}"/>
+    </Border>
+
+    <HeaderedContentControl Grid.Column="2"
+                            Padding="4">
+      <HeaderedContentControl.Header>
+        <StackPanel Orientation="Horizontal" Spacing="8">
+          <Viewbox Width="16" Height="16">
+            <Image Source="/Assets/Icons/wrench.png"/>
+          </Viewbox>
+          <TextBlock Text="Settings" VerticalAlignment="Center"/>
+        </StackPanel>
+      </HeaderedContentControl.Header>
+
+      <Grid ColumnDefinitions="Auto,16,*"
+            RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,*">
+
+        <TextBlock Grid.Row="0" Grid.Column="0" Text="Measure" VerticalAlignment="Center" Margin="0 0 8 2"/>
+        <ComboBox Grid.Column="2"
+                  SelectedIndex="{Binding DataKeyIndex}"
+                  HorizontalAlignment="Stretch">
+          <collections:ArrayList>
+            <system:String>HFD</system:String>
+            <system:String>FWHM</system:String>
+            <system:String>Eccentricity</system:String>
+            <system:String>Residual</system:String>
+            <system:String>Weight</system:String>
+          </collections:ArrayList>
+        </ComboBox>
+
+        <Separator Grid.Row="1" Grid.ColumnSpan="3" Margin="0 4"/>
+
+        <TextBlock Grid.Row="2" Grid.Column="0" Text="Samples" VerticalAlignment="Center" Margin="0 0 8 2"/>
+        <Slider Grid.Row="2" Grid.Column="2"
+                Value="{Binding MaxSamples}"
+                Minimum="1" Maximum="1000"
+                MinWidth="80"
+                Margin="0 0 0 2"/>
+
+        <TextBlock Grid.Row="3" Grid.Column="0" Text="Steps" VerticalAlignment="Center" Margin="0 0 8 2"/>
+        <Slider Grid.Row="3" Grid.Column="2"
+                Value="{Binding Steps}"
+                Minimum="0" Maximum="16"
+                Ticks="0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16"
+                IsSnapToTickEnabled="True"
+                MinWidth="80"
+                Margin="0 0 0 2"/>
+
+        <TextBlock Grid.Row="4" Grid.Column="0" Text="Smoothness" VerticalAlignment="Center" Margin="0 0 8 2"/>
+        <controls:PrecisionSlider Grid.Row="4" Grid.Column="2"
+                                  Value="{Binding Smoothness}"
+                                  Minimum="0.0" Maximum="1.0"
+                                  MinWidth="80"
+                                  Margin="0 0 0 2"
+                                  PrecisionScale="0.1"/>
+
+        <Separator Grid.Row="5" Grid.ColumnSpan="3" Margin="0 4"/>
+
+        <CheckBox Grid.Row="6" Grid.ColumnSpan="3" Content="Weighted Smoothing" IsChecked="{Binding WeightedSmoothing}" ToolTip.Tip="If checked, the local smoothness will be based on the PSF weight. A large PSF weight results in less smoothing and vice versa."/>
+
+        <CheckBox Grid.Row="7" Grid.ColumnSpan="3" Content="Normalize Dimensions" IsChecked="{Binding NormalizeDimensions}"/>
+
+        <Separator Grid.Row="8" Grid.ColumnSpan="3" Margin="0 4"/>
+
+        <TextBlock Grid.Row="9" Grid.Column="0" Text="Used samples"/>
+        <TextBlock Grid.Row="9" Grid.Column="2" Text="{Binding DataSamples, FallbackValue=-}"/>
+
+        <Button Grid.Row="10" Grid.ColumnSpan="3"
+                Command="{Binding Reset}"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Bottom"
+                Margin="0 4 0 0">
+          <Grid ColumnDefinitions="Auto,10,*">
+            <TextBlock Grid.Column="0"
+                       Text="Reset"
+                       HorizontalAlignment="Left"
+                       Margin="4 0 0 0"/>
+            <Viewbox Grid.Column="2"
+                     Width="16" Height="16"
+                     HorizontalAlignment="Right"
+                     Margin="-2 -1 -2 -2">
+              <Image Source="/Assets/Icons/undo.png"/>
+            </Viewbox>
+          </Grid>
+        </Button>
+      </Grid>
+
+    </HeaderedContentControl>
+
+  </Grid>
+
+</Window>

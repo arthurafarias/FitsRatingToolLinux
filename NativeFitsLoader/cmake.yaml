@@ -1,0 +1,17 @@
+# would be nice to have a declarative project description in yaml for CMAKE
+
+cmake_minimum_required:
+  VERSION: 4.0
+project:
+  name: NativeFitsLoader
+
+file_group:
+  name: ${project.name}_sources
+    "src/*.cpp"
+  
+library:
+  name: ${project.name}
+  type: shared
+  files:
+    - ${project.name}_sources
+    - "..."

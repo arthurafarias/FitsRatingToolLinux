@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AvaloniaProject">
+    <option name="projectPerEditor">
+      <map>
+        <entry key="GuiApp/Assets/Styles/CheckBox.axaml" value="GuiApp/GuiApp.csproj" />
+        <entry key="GuiApp/UI/Evaluation/Windows/EvaluationFormulaWindow.axaml" value="GuiApp/GuiApp.csproj" />
+        <entry key="GuiApp/UI/FitsImage/Views/FitsImageViewerSettingsView.axaml" value="GuiApp/GuiApp.csproj" />
+        <entry key="GuiApp/UI/Info/Windows/AboutWindow.axaml" value="GuiApp/GuiApp.csproj" />
+        <entry key="GuiApp/UI/JobRunner/Windows/JobRunnerWindow.axaml" value="GuiApp/GuiApp.csproj" />
+      </map>
+    </option>
+  </component>
+</project>
