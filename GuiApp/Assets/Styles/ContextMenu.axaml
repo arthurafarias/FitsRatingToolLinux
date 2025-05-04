@@ -51,8 +51,8 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
                 HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
                 CornerRadius="{TemplateBinding CornerRadius}">
           <ScrollViewer Classes="menuscroller">
-            <ItemsPresenter Name="PART_ItemsPresenter"
-                            Items="{TemplateBinding Items}"
+            <ListBox Name="PART_ItemsPresenter"
+                            ItemsSource="{TemplateBinding Items}"
                             ItemsPanel="{TemplateBinding ItemsPanel}"
                             ItemTemplate="{TemplateBinding ItemTemplate}"
                             Margin="{DynamicResource MenuFlyoutScrollerMargin}"

@@ -18,7 +18,6 @@
 
 using Avalonia;
 using Avalonia.Controls;
-using Avalonia.Controls.Generators;
 using Avalonia.Controls.Presenters;
 using Avalonia.Controls.Primitives;
 using Avalonia.Controls.Templates;
@@ -29,41 +28,9 @@ using System.Collections.Generic;
 namespace FitsRatingTool.GuiApp.UI.Controls.ContextualItemsControl
 {
     public abstract class ContextualItemsControl<TContext, TDefaultContext> : SelectingItemsControl
-        where TContext : class, IContextContainer
+        where TContext : ContextContainer
         where TDefaultContext : TContext, new()
     {
-        protected class ContextualItemContainerGenerator : ItemContainerGenerator
-        {
-            private readonly ContextualItemsControl<TContext, TDefaultContext> control;
-
-            public ContextualItemContainerGenerator(ContextualItemsControl<TContext, TDefaultContext> control) : base(control)
-            {
-                this.control = control;
-            }
-
-            protected override IControl CreateContainer(object item)
-            {
-                var result = item as TContext;
-
-                if (result == null)
-                {
-                    result = control.ContextContainerTemplate.Build();
-                    result.DataContext = item;
-                    result.SetValue(ContentPresenter.ContentProperty, item, BindingPriority.Style);
-
-                    if (ItemTemplate != null)
-                    {
-                        result.SetValue(
-                            ContentPresenter.ContentTemplateProperty,
-                            ItemTemplate,
-                            BindingPriority.TemplatedParent);
-                    }
-                }
-
-                return result;
-            }
-        }
-
         /// <summary>
         /// The default value for the <see cref="ContextContainerTemplate"/> property.
         /// </summary>
@@ -83,46 +50,46 @@ namespace FitsRatingTool.GuiApp.UI.Controls.ContextualItemsControl
             set { SetValue(ContextContainerTemplateProperty, value); }
         }
 
-        protected override IItemContainerGenerator CreateItemContainerGenerator()
-        {
-            return new ContextualItemContainerGenerator(this);
-        }
+        // protected override IItemContainerGenerator CreateItemContainerGenerator()
+        // {
+        //     return new ContextualItemContainerGenerator(this);
+        // }
 
         private Dictionary<TContext, EventHandler<AvaloniaPropertyChangedEventArgs>> propertyChangedHandlers = new();
 
-        protected override void OnContainersMaterialized(ItemContainerEventArgs e)
-        {
-            foreach (var container in e.Containers)
-            {
-                if (container.ContainerControl is TContext obj)
-                {
-                    void handler(object? sender, AvaloniaPropertyChangedEventArgs args)
-                    {
-                        OnContainerPropertyChanged(obj, args);
-                    }
-                    propertyChangedHandlers.Add(obj, handler);
-                    obj.PropertyChanged += handler;
-                }
-            }
+        // protected override void OnContainersMaterialized(ItemContainerEventArgs e)
+        // {
+        //     foreach (var container in e.Containers)
+        //     {
+        //         if (container.ContainerControl is TContext obj)
+        //         {
+        //             void handler(object? sender, AvaloniaPropertyChangedEventArgs args)
+        //             {
+        //                 OnContainerPropertyChanged(obj, args);
+        //             }
+        //             propertyChangedHandlers.Add(obj, handler);
+        //             obj.PropertyChanged += handler;
+        //         }
+        //     }
+        //
+        //     base.OnContainersMaterialized(e);
+        // }
 
-            base.OnContainersMaterialized(e);
-        }
-
-        protected override void OnContainersDematerialized(ItemContainerEventArgs e)
-        {
-            foreach (var container in e.Containers)
-            {
-                if (container.ContainerControl is TContext obj)
-                {
-                    if (propertyChangedHandlers.Remove(obj, out var handler))
-                    {
-                        obj.PropertyChanged -= handler;
-                    }
-                }
-            }
-
-            base.OnContainersDematerialized(e);
-        }
+        // protected override void OnContainersDematerialized(ItemContainerEventArgs e)
+        // {
+        //     foreach (var container in e.Containers)
+        //     {
+        //         if (container.ContainerControl is TContext obj)
+        //         {
+        //             if (propertyChangedHandlers.Remove(obj, out var handler))
+        //             {
+        //                 obj.PropertyChanged -= handler;
+        //             }
+        //         }
+        //     }
+        //
+        //     base.OnContainersDematerialized(e);
+        // }
 
         private void OnContainerPropertyChanged(TContext container, AvaloniaPropertyChangedEventArgs args)
         {

@@ -67,7 +67,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
     <ScrollViewer Grid.Row="6"
                   IsVisible="{Binding IsGroupedByFitsKeyword}"
                   VerticalScrollBarVisibility="Hidden">
-      <ItemsControl Items="{Binding GroupingFitsKeywords}">
+      <ItemsControl ItemsSource="{Binding GroupingFitsKeywords}">
         <ItemsControl.ItemTemplate>
           <DataTemplate>
             <Grid ColumnDefinitions="*,4,Auto" RowDefinitions="*" Margin="0 1">

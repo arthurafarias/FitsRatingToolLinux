@@ -16,6 +16,7 @@
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+using System.Linq;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.Primitives;
@@ -106,7 +107,7 @@ namespace FitsRatingTool.GuiApp.UI.Controls
         {
             if (tabScrollViewer != null)
             {
-                int i = IndexOf(Items, item);
+                int i = Items.IndexOf(item);
                 if (i >= 0)
                 {
                     SelectedIndex = i;

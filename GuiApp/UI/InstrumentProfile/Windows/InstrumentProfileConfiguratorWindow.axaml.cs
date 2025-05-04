@@ -69,7 +69,7 @@ namespace FitsRatingTool.GuiApp.UI.InstrumentProfile.Windows
             });
         }
 
-        protected override void OnClosing(CancelEventArgs e)
+        protected override void OnClosing(WindowClosingEventArgs e)
         {
             base.OnClosing(e);
 
@@ -99,7 +99,7 @@ namespace FitsRatingTool.GuiApp.UI.InstrumentProfile.Windows
             AvaloniaXamlLoader.Load(this);
         }
 
-        private async Task ShowDeleteConfirmationDialogAsync(InteractionContext<IReadOnlyInstrumentProfile, bool> ctx)
+        private async Task ShowDeleteConfirmationDialogAsync(IInteractionContext<IReadOnlyInstrumentProfile, bool> ctx)
         {
             var profile = ctx.Input;
 
@@ -108,14 +108,14 @@ namespace FitsRatingTool.GuiApp.UI.InstrumentProfile.Windows
             ctx.SetOutput(result == MessageBoxResult.Ok);
         }
 
-        private async Task ShowCancelConfirmationDialogAsync(InteractionContext<Unit, bool> ctx)
+        private async Task ShowCancelConfirmationDialogAsync(IInteractionContext<Unit, bool> ctx)
         {
             var result = await MessageBoxWindow.ShowAsync(this, MessageBoxStyle.OkCancel, "Discard changes?", $"The currently selected profile was changed. Are you sure you want to discard the changes?", null, MessageBoxIcon.Warning, false);
 
             ctx.SetOutput(result == MessageBoxResult.Ok);
         }
 
-        private async Task ShowImportOpenFileDialogAsync(InteractionContext<Unit, string> ctx)
+        private async Task ShowImportOpenFileDialogAsync(IInteractionContext<Unit, string> ctx)
         {
             OpenFileDialog dialog = new()
             {
@@ -128,7 +128,7 @@ namespace FitsRatingTool.GuiApp.UI.InstrumentProfile.Windows
             ctx.SetOutput(files != null && files.Length == 1 ? files[0] : "");
         }
 
-        private async Task ShowExportSaveFileDialogAsync(InteractionContext<Unit, string> ctx)
+        private async Task ShowExportSaveFileDialogAsync(IInteractionContext<Unit, string> ctx)
         {
             SaveFileDialog dialog = new()
             {
@@ -140,7 +140,7 @@ namespace FitsRatingTool.GuiApp.UI.InstrumentProfile.Windows
             ctx.SetOutput(file ?? "");
         }
 
-        private async Task ShowImportResultDialogAsync(InteractionContext<IInstrumentProfileConfiguratorViewModel.ImportResult, Unit> ctx)
+        private async Task ShowImportResultDialogAsync(IInteractionContext<IInstrumentProfileConfiguratorViewModel.ImportResult, Unit> ctx)
         {
             var result = ctx.Input;
 
@@ -160,7 +160,7 @@ namespace FitsRatingTool.GuiApp.UI.InstrumentProfile.Windows
             ctx.SetOutput(Unit.Default);
         }
 
-        private async Task ShowExportResultDialogAsync(InteractionContext<IInstrumentProfileConfiguratorViewModel.ExportResult, Unit> ctx)
+        private async Task ShowExportResultDialogAsync(IInteractionContext<IInstrumentProfileConfiguratorViewModel.ExportResult, Unit> ctx)
         {
             var result = ctx.Input;
 

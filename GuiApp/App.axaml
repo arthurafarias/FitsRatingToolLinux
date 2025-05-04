@@ -26,7 +26,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
     <StyleInclude Source="resm:OxyPlot.Avalonia.Themes.Default.xaml?assembly=OxyPlot.Avalonia"/>
 
     <!-- Fluent Dark theme -->
-    <FluentTheme Mode="Dark"/>
+    <FluentTheme />
 
     <!-- Custom controls -->
     <StyleInclude Source="/Assets/Styles/WindowControlButton.axaml"/>

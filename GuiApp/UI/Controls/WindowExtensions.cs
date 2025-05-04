@@ -23,6 +23,6 @@ namespace FitsRatingTool.GuiApp.UI.Controls
 {
     public class WindowExtensions
     {
-        public static readonly AttachedProperty<IControl?> TitleIconProperty = AvaloniaProperty.RegisterAttached<WindowExtensions, Window, IControl?>("TitleIcon", null, false, BindingMode.OneTime);
+        public static readonly AttachedProperty<Control?> TitleIconProperty = AvaloniaProperty.RegisterAttached<WindowExtensions, Window, Control?>("TitleIcon", null, false, BindingMode.OneTime);
     }
 }

@@ -25,11 +25,6 @@ namespace FitsRatingTool.GuiApp.UI.ImageAnalysis.Views
     {
         public ImageAnalysisView()
         {
-            InitializeComponent();
-        }
-
-        private void InitializeComponent()
-        {
             AvaloniaXamlLoader.Load(this);
         }
     }

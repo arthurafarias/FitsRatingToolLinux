@@ -52,7 +52,7 @@ namespace FitsRatingTool.GuiApp.UI.Evaluation.Windows
             AvaloniaXamlLoader.Load(this);
         }
 
-        private async Task ShowExportProgressDialogAsync(InteractionContext<IEvaluationExportProgressViewModel, ExportResult> ctx)
+        private async Task ShowExportProgressDialogAsync(IInteractionContext<IEvaluationExportProgressViewModel, ExportResult> ctx)
         {
             var window = new EvaluationExportProgressWindow()
             {
@@ -63,7 +63,7 @@ namespace FitsRatingTool.GuiApp.UI.Evaluation.Windows
             ctx.SetOutput(await window.ShowDialog<ExportResult>(this));
         }
 
-        private async Task ShowExportResultDialogAsync(InteractionContext<ExportResult, Unit> ctx)
+        private async Task ShowExportResultDialogAsync(IInteractionContext<ExportResult, Unit> ctx)
         {
             var result = ctx.Input;
 

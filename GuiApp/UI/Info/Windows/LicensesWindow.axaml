@@ -47,7 +47,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
   <Grid RowDefinitions="Auto,*">
     <ComboBox Name="LicenseComboBox"
               Grid.Row="0"
-              Items="{Binding .}"
+              ItemsSource="{Binding .}"
               SelectedIndex="0"
               Width="180">
       <ComboBox.ItemTemplate>

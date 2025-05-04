@@ -20,7 +20,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:imaging="using:Avalonia.Visuals.Media.Imaging"
+             xmlns:imaging="using:Avalonia.Media.Imaging"
              xmlns:controls="using:FitsRatingTool.GuiApp.UI.Controls"
              xmlns:vm="using:FitsRatingTool.GuiApp.UI.App.ViewModels"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"

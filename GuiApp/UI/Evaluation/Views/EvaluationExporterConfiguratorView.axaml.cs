@@ -25,11 +25,6 @@ namespace FitsRatingTool.GuiApp.UI.Evaluation.Views
     {
         public EvaluationExporterConfiguratorView()
         {
-            InitializeComponent();
-        }
-
-        private void InitializeComponent()
-        {
             AvaloniaXamlLoader.Load(this);
         }
     }

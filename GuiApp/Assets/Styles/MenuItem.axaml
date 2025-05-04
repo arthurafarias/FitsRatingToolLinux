@@ -142,8 +142,8 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
                     Margin="0 0 10 10"
                     BoxShadow="2 2 5 0 #90000000">
               <ScrollViewer Classes="menuscroller">
-                <ItemsPresenter Name="PART_ItemsPresenter"
-                                Items="{TemplateBinding Items}"
+                <ListBox Name="PART_ItemsPresenter"
+                                ItemsSource="{TemplateBinding Items}"
                                 ItemsPanel="{TemplateBinding ItemsPanel}"
                                 ItemTemplate="{TemplateBinding ItemTemplate}"
                                 Grid.IsSharedSizeScope="True"/>
@@ -223,8 +223,8 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
                           Margin="0 0 10 10"
                           BoxShadow="2 2 5 0 #90000000">
                     <ScrollViewer Classes="menuscroller">
-                      <ItemsPresenter Name="PART_ItemsPresenter"
-                                      Items="{TemplateBinding Items}"
+                      <ListBox Name="PART_ItemsPresenter"
+                                      ItemsSource="{TemplateBinding Items}"
                                       ItemsPanel="{TemplateBinding ItemsPanel}"
                                       ItemTemplate="{TemplateBinding ItemTemplate}"
                                       Grid.IsSharedSizeScope="True"/>

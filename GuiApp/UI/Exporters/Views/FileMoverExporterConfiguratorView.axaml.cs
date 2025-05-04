@@ -50,7 +50,7 @@ namespace FitsRatingTool.GuiApp.UI.Exporters.Views
             base.OnAttachedToLogicalTree(e);
         }
 
-        private async Task ShowOpenFolderDialogAsync(InteractionContext<Unit, string> ctx)
+        private async Task ShowOpenFolderDialogAsync(IInteractionContext<Unit, string> ctx)
         {
             if (window != null)
             {

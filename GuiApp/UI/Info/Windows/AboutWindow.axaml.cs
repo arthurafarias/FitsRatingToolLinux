@@ -32,6 +32,10 @@ namespace FitsRatingTool.GuiApp.UI.Info.Windows
 #endif
         }
 
+        private void InitializeComponent()
+        {
+        }
+
         public async void ShowLicensesDialog()
         {
             await new LicensesWindow().ShowDialog(this);

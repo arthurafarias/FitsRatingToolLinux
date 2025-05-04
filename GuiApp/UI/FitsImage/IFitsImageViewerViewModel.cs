@@ -17,7 +17,7 @@
 */
 
 using Avalonia.Collections;
-using Avalonia.Visuals.Media.Imaging;
+using Avalonia.Media.Imaging;
 using ReactiveUI;
 using System;
 using System.Reactive;

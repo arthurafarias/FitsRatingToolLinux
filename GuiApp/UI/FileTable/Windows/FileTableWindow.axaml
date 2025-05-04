@@ -51,7 +51,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
     <Border Grid.Column="0"
             Classes="themed"
             Padding="1">
-      <DataGrid Items="{Binding Records}"
+      <DataGrid ItemsSource="{Binding Records}"
                 VerticalScrollBarVisibility="Visible"
                 HorizontalScrollBarVisibility="Visible"
                 AutoGenerateColumns="False"
@@ -143,7 +143,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
           </StackPanel>
         </HeaderedContentControl.Header>
 
-        <DataGrid Items="{Binding SelectedRecord.Header}"
+        <DataGrid ItemsSource="{Binding SelectedRecord.Header}"
                   VerticalScrollBarVisibility="Visible"
                   HorizontalScrollBarVisibility="Visible"
                   AutoGenerateColumns="False"

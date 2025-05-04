@@ -67,5 +67,9 @@ namespace FitsRatingTool.GuiApp.UI.Info.Windows
 
             DataContext = licenses;
         }
+
+        private void InitializeComponent()
+        {
+        }
     }
 }

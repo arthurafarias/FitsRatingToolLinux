@@ -67,7 +67,7 @@ namespace FitsRatingTool.GuiApp.UI.JobRunner.Windows
             AvaloniaXamlLoader.Load(this);
         }
 
-        protected override void OnClosing(CancelEventArgs e)
+        protected override void OnClosing(WindowClosingEventArgs e)
         {
             base.OnClosing(e);
 
@@ -85,7 +85,7 @@ namespace FitsRatingTool.GuiApp.UI.JobRunner.Windows
             }
         }
 
-        private async Task ShowOpenFileDialogAsync(InteractionContext<Unit, string> ctx)
+        private async Task ShowOpenFileDialogAsync(IInteractionContext<Unit, string> ctx)
         {
             OpenFileDialog dialog = new()
             {
@@ -98,13 +98,13 @@ namespace FitsRatingTool.GuiApp.UI.JobRunner.Windows
             ctx.SetOutput(files != null && files.Length == 1 ? files[0] : "");
         }
 
-        private async Task ShowOpenFolderDialogAsync(InteractionContext<Unit, string> ctx)
+        private async Task ShowOpenFolderDialogAsync(IInteractionContext<Unit, string> ctx)
         {
             var dir = await new OpenFolderDialog().ShowAsync(this);
             ctx.SetOutput(dir ?? "");
         }
 
-        private async Task ShowRunProgressDialogAsync(InteractionContext<IJobRunnerProgressViewModel, JobResult> ctx)
+        private async Task ShowRunProgressDialogAsync(IInteractionContext<IJobRunnerProgressViewModel, JobResult> ctx)
         {
             var window = new JobRunnerProgressWindow()
             {
@@ -115,7 +115,7 @@ namespace FitsRatingTool.GuiApp.UI.JobRunner.Windows
             ctx.SetOutput(await window.ShowDialog<JobResult>(this));
         }
 
-        private async Task ShowRunResultDialogAsync(InteractionContext<JobResult, Unit> ctx)
+        private async Task ShowRunResultDialogAsync(IInteractionContext<JobResult, Unit> ctx)
         {
             var result = ctx.Input;
 
@@ -133,7 +133,7 @@ namespace FitsRatingTool.GuiApp.UI.JobRunner.Windows
             ctx.SetOutput(Unit.Default);
         }
 
-        private async Task ShowExporterConfirmationDialogAsync(InteractionContext<ConfirmationEventArgs, ConfirmationEventArgs.Result> ctx)
+        private async Task ShowExporterConfirmationDialogAsync(IInteractionContext<ConfirmationEventArgs, ConfirmationEventArgs.Result> ctx)
         {
             var e = ctx.Input;
 

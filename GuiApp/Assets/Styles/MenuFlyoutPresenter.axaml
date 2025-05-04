@@ -46,8 +46,8 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
                 CornerRadius="{TemplateBinding CornerRadius}">
           <ScrollViewer HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}"
                         VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}">
-            <ItemsPresenter Name="PART_ItemsPresenter"
-                            Items="{TemplateBinding Items}"
+            <ListBox Name="PART_ItemsPresenter"
+                            ItemsSource="{TemplateBinding Items}"
                             ItemsPanel="{TemplateBinding ItemsPanel}"
                             ItemTemplate="{TemplateBinding ItemTemplate}"
                             Margin="{DynamicResource MenuFlyoutScrollerMargin}"

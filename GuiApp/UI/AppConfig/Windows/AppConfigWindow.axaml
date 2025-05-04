@@ -52,7 +52,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
     <controls:ScrollableTabControl
                Grid.Row="0"
                Name="ViewerTabs"
-               Items="{Binding Categories}">
+               ItemsSource="{Binding Categories}">
 
       <TabControl.ItemTemplate>
         <DataTemplate>
@@ -65,7 +65,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
           <Border Classes="themed inner dark"
                   Margin="-5">
             <ScrollViewer VerticalScrollBarVisibility="Auto">
-              <ItemsControl Items="{Binding Settings}"
+              <ItemsControl ItemsSource="{Binding Settings}"
                             Grid.IsSharedSizeScope="True"
                             Padding="0 2">
                 <ItemsControl.ItemTemplate>

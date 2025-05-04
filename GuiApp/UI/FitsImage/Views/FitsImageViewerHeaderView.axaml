@@ -24,7 +24,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
              mc:Ignorable="d" d:DesignWidth="600" d:DesignHeight="400"
              x:Class="FitsRatingTool.GuiApp.UI.FitsImage.Views.FitsImageViewerHeaderView">
 
-  <DataGrid Items="{Binding FitsImage.Header}"
+  <DataGrid ItemsSource="{Binding FitsImage.Header}"
             VerticalScrollBarVisibility="Visible"
             HorizontalScrollBarVisibility="Visible"
             AutoGenerateColumns="False"

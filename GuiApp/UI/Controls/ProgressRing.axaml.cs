@@ -25,11 +25,6 @@ namespace FitsRatingTool.GuiApp.UI.Controls
     {
         public ProgressRing()
         {
-            InitializeComponent();
-        }
-
-        private void InitializeComponent()
-        {
             AvaloniaXamlLoader.Load(this);
         }
     }

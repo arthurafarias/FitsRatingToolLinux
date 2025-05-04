@@ -151,7 +151,7 @@ namespace FitsRatingTool.GuiApp
             => AppBuilder.Configure<App>()
                 .With(new Win32PlatformOptions
                 {
-                    AllowEglInitialization = false
+                    // AllowEglInitialization = false
                 })
                 .UsePlatformDetect()
                 .LogToTrace()

@@ -57,7 +57,7 @@ namespace FitsRatingTool.GuiApp.UI.App.Views
             base.OnAttachedToLogicalTree(e);
         }
 
-        private async Task ShowChangeProfileConfirmationDialogAsync(InteractionContext<Unit, bool> ctx)
+        private async Task ShowChangeProfileConfirmationDialogAsync(IInteractionContext<Unit, bool> ctx)
         {
             if (window != null)
             {

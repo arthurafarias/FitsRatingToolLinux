@@ -142,7 +142,7 @@ public partial class ZoomBorder : Border
         //InvalidateScrollable();
     }
 
-    private void ChildChanged(IControl? element)
+    private void ChildChanged(Control? element)
     {
         Log($"[ChildChanged] {element}");
 
@@ -157,7 +157,7 @@ public partial class ZoomBorder : Border
         }
     }
 
-    private void AttachElement(IControl? element)
+    private void AttachElement(Control? element)
     {
         if (element == null)
         {
@@ -197,9 +197,9 @@ public partial class ZoomBorder : Border
     private bool IsPressed(ButtonName button, PointerPointProperties? properties)
     {
         return properties != null
-            && ((properties.IsLeftButtonPressed && button == ButtonName.Left)
-            || (properties.IsRightButtonPressed && button == ButtonName.Right)
-            || (properties.IsMiddleButtonPressed && button == ButtonName.Middle));
+            && ((properties.Value.IsLeftButtonPressed && button == ButtonName.Left)
+            || (properties.Value.IsRightButtonPressed && button == ButtonName.Right)
+            || (properties.Value.IsMiddleButtonPressed && button == ButtonName.Middle));
     }
 
     private void Pressed(PointerPressedEventArgs e)

@@ -38,7 +38,7 @@ namespace FitsRatingTool.GuiApp.UI.Controls
             CommandProperty.Changed.Subscribe(x => HandleCommandChanged(x.Sender, x.NewValue.GetValueOrDefault<ICommand>()));
         }
 
-        private static void HandleCommandChanged(IAvaloniaObject element, ICommand? commandValue)
+        private static void HandleCommandChanged(AvaloniaObject element, ICommand? commandValue)
         {
             if (element is Interactive interactElem)
             {

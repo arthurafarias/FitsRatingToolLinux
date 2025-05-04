@@ -29,10 +29,10 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
                 BorderThickness="{TemplateBinding BorderThickness}"
                 CornerRadius="{TemplateBinding CornerRadius}"
                 Padding="{TemplateBinding Padding}">
-          <ItemsPresenter Name="PART_ItemsPresenter"
-                          Items="{TemplateBinding Items}"
-                          ItemsPanel="{TemplateBinding ItemsPanel}"
-                          ItemTemplate="{TemplateBinding ItemTemplate}"/>
+          <ListBox Name="PART_ItemsPresenter"
+                   ItemsSource="{TemplateBinding Items}"
+                   ItemsPanel="{TemplateBinding ItemsPanel}"
+                   ItemTemplate="{TemplateBinding ItemTemplate}"/>
         </Border>
       </ControlTemplate>
     </Setter>

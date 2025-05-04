@@ -71,7 +71,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
         <!-- Animate circles -->
         <Style Selector="Ellipse.animation_1">
           <Style.Animations>
-            <Animation Duration="0:0:0.8" Delay="0:0:0" RepeatCount="INFINITE">
+            <Animation Duration="0:0:0.8" Delay="0:0:0" IterationCount="INFINITE">
               <KeyFrame Cue="1%">
                 <Setter Property="Opacity" Value="1.0"/>
               </KeyFrame>
@@ -83,7 +83,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
         </Style>
         <Style Selector="Ellipse.animation_2">
           <Style.Animations>
-            <Animation Duration="0:0:0.8" Delay="0:0:0.1" RepeatCount="INFINITE">
+            <Animation Duration="0:0:0.8" Delay="0:0:0.1" IterationCount="INFINITE">
               <KeyFrame Cue="1%">
                 <Setter Property="Opacity" Value="1.0"/>
               </KeyFrame>
@@ -95,7 +95,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
         </Style>
         <Style Selector="Ellipse.animation_3">
           <Style.Animations>
-            <Animation Duration="0:0:0.8" Delay="0:0:0.2" RepeatCount="INFINITE">
+            <Animation Duration="0:0:0.8" Delay="0:0:0.2" IterationCount="INFINITE">
               <KeyFrame Cue="1%">
                 <Setter Property="Opacity" Value="1.0"/>
               </KeyFrame>
@@ -107,7 +107,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
         </Style>
         <Style Selector="Ellipse.animation_4">
           <Style.Animations>
-            <Animation Duration="0:0:0.8" Delay="0:0:0.3" RepeatCount="INFINITE">
+            <Animation Duration="0:0:0.8" Delay="0:0:0.3" IterationCount="INFINITE">
               <KeyFrame Cue="1%">
                 <Setter Property="Opacity" Value="1.0"/>
               </KeyFrame>
@@ -119,7 +119,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
         </Style>
         <Style Selector="Ellipse.animation_5">
           <Style.Animations>
-            <Animation Duration="0:0:0.8" Delay="0:0:0.4" RepeatCount="INFINITE">
+            <Animation Duration="0:0:0.8" Delay="0:0:0.4" IterationCount="INFINITE">
               <KeyFrame Cue="1%">
                 <Setter Property="Opacity" Value="1.0"/>
               </KeyFrame>
@@ -131,7 +131,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
         </Style>
         <Style Selector="Ellipse.animation_6">
           <Style.Animations>
-            <Animation Duration="0:0:0.8" Delay="0:0:0.5" RepeatCount="INFINITE">
+            <Animation Duration="0:0:0.8" Delay="0:0:0.5" IterationCount="INFINITE">
               <KeyFrame Cue="1%">
                 <Setter Property="Opacity" Value="1.0"/>
               </KeyFrame>
@@ -143,7 +143,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
         </Style>
         <Style Selector="Ellipse.animation_7">
           <Style.Animations>
-            <Animation Duration="0:0:0.8" Delay="0:0:0.6" RepeatCount="INFINITE">
+            <Animation Duration="0:0:0.8" Delay="0:0:0.6" IterationCount="INFINITE">
               <KeyFrame Cue="1%">
                 <Setter Property="Opacity" Value="1.0"/>
               </KeyFrame>
@@ -155,7 +155,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
         </Style>
         <Style Selector="Ellipse.animation_8">
           <Style.Animations>
-            <Animation Duration="0:0:0.8" Delay="0:0:0.7" RepeatCount="INFINITE">
+            <Animation Duration="0:0:0.8" Delay="0:0:0.7" IterationCount="INFINITE">
               <KeyFrame Cue="1%">
                 <Setter Property="Opacity" Value="1.0"/>
               </KeyFrame>

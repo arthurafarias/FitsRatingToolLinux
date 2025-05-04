@@ -23,12 +23,12 @@ namespace FitsRatingTool.GuiApp.Utils
 {
     public static class DpiHelper
     {
-        public static double GetDpi(ILayoutable control)
+        public static double GetDpi(Layoutable control)
         {
             return LayoutHelper.GetLayoutScale(control) * 96.0;
         }
 
-        public static PixelSize GetPixelSize(ILayoutable control, Size size)
+        public static PixelSize GetPixelSize(Layoutable control, Size size)
         {
             return PixelSize.FromSizeWithDpi(size, GetDpi(control));
         }

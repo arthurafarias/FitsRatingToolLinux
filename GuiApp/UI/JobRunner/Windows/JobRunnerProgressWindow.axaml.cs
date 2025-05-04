@@ -25,6 +25,7 @@ using System.ComponentModel;
 using FitsRatingTool.GuiApp.UI.JobRunner.ViewModels;
 using FitsRatingTool.Common.Models.Evaluation;
 using System.Threading.Tasks;
+using Avalonia.Controls;
 using FitsRatingTool.GuiApp.UI.MessageBox.Windows;
 using FitsRatingTool.GuiApp.UI.MessageBox.ViewModels;
 
@@ -61,7 +62,7 @@ namespace FitsRatingTool.GuiApp.UI.JobRunner.Windows
             AvaloniaXamlLoader.Load(this);
         }
 
-        protected override void OnClosing(CancelEventArgs e)
+        protected override void OnClosing(WindowClosingEventArgs e)
         {
             base.OnClosing(e);
 
@@ -74,7 +75,7 @@ namespace FitsRatingTool.GuiApp.UI.JobRunner.Windows
             }
         }
 
-        private async Task ShowExporterConfirmationDialogAsync(InteractionContext<ConfirmationEventArgs, ConfirmationEventArgs.Result> ctx)
+        private async Task ShowExporterConfirmationDialogAsync(IInteractionContext<ConfirmationEventArgs, ConfirmationEventArgs.Result> ctx)
         {
             var e = ctx.Input;
 

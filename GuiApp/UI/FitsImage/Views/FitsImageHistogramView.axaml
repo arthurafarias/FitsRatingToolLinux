@@ -39,7 +39,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
                           ClipTitle="True"
                           MinimumPadding="0" AbsoluteMinimum="0"
                           MaximumPadding="0"
-                          Items="{Binding Items}"
+                          ItemsSource="{Binding Items}"
                           AxislineThickness="0"/>
         <oxy:LinearAxis Position="Bottom"
                         IsVisible="False"
@@ -51,7 +51,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
                         AxislineThickness="0"/>
       </oxy:Plot.Axes>
       <oxy:Plot.Series>
-        <oxy:LinearBarSeries Items="{Binding Items}"
+        <oxy:LinearBarSeries ItemsSource="{Binding Items}"
                              DataFieldX="Index" DataFieldY="Value"
                              BarWidth="10000"
                              StrokeThickness="1"

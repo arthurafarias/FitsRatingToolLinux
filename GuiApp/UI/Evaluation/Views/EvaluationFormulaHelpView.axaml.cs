@@ -26,11 +26,6 @@ namespace FitsRatingTool.GuiApp.UI.Evaluation.Views
     {
         public EvaluationFormulaHelpView()
         {
-            InitializeComponent();
-        }
-
-        private void InitializeComponent()
-        {
             AvaloniaXamlLoader.Load(this);
         }
     }

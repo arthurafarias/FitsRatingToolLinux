@@ -18,7 +18,7 @@
 
 using Avalonia.Collections;
 using Avalonia.Utilities;
-using Avalonia.Visuals.Media.Imaging;
+using Avalonia.Media.Imaging;
 using Microsoft.VisualStudio.Threading;
 using ReactiveUI;
 using System;

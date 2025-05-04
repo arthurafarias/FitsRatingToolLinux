@@ -73,7 +73,7 @@ namespace FitsRatingTool.GuiApp.UI.Evaluation.Windows
             AvaloniaXamlLoader.Load(this);
         }
 
-        private async Task ShowOpenFileDialogAsync(InteractionContext<Unit, string> ctx)
+        private async Task ShowOpenFileDialogAsync(IInteractionContext<Unit, string> ctx)
         {
             OpenFileDialog dialog = new()
             {
@@ -86,7 +86,7 @@ namespace FitsRatingTool.GuiApp.UI.Evaluation.Windows
             ctx.SetOutput(files != null && files.Length == 1 ? files[0] : "");
         }
 
-        private async Task ShowSaveFileDialogAsync(InteractionContext<Unit, string> ctx)
+        private async Task ShowSaveFileDialogAsync(IInteractionContext<Unit, string> ctx)
         {
             SaveFileDialog dialog = new()
             {

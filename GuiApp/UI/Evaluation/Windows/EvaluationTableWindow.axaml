@@ -68,7 +68,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
             </StackPanel>
           </HeaderedContentControl.Header>
 
-          <DataGrid Items="{Binding Records}"
+          <DataGrid ItemsSource="{Binding Records}"
                     VerticalScrollBarVisibility="Visible"
                     HorizontalScrollBarVisibility="Visible"
                     AutoGenerateColumns="False"
@@ -174,7 +174,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
             <TextBlock Grid.Column="0" Text="Group" VerticalAlignment="Center"/>
             <ComboBox Grid.Column="2"
                       SelectedItem="{Binding SelectedGroupKey}"
-                      Items="{Binding GroupKeys}"
+                      ItemsSource="{Binding GroupKeys}"
                       MaxWidth="120" Width="120"
                       HorizontalAlignment="Stretch"/>
 
@@ -313,7 +313,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
               </Border>
 
               <Panel Grid.Column="1">
-                <statistics_controls:StatisticsControl Items="{Binding Records}"
+                <statistics_controls:StatisticsControl ItemsSource="{Binding Records}"
                                                        SelectedItem="{Binding SelectedRecord}"
                                                        DataKey="{Binding DataKeyIndex}"
                                                        ScalingMode="Manual"
@@ -521,7 +521,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
               </Border>
 
               <Panel Grid.Column="1">
-                <statistics_controls:StatisticsControl Items="{Binding Records}"
+                <statistics_controls:StatisticsControl ItemsSource="{Binding Records}"
                                                        SelectedItem="{Binding SelectedRecord}"
                                                        DataKey="0"
                                                        ScalingMode="Manual"

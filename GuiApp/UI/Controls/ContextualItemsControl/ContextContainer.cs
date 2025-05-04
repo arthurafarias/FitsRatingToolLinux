@@ -16,11 +16,12 @@
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+using Avalonia.Controls;
 using Avalonia.Controls.Presenters;
 
 namespace FitsRatingTool.GuiApp.UI.Controls.ContextualItemsControl
 {
-    public abstract class ContextContainer : ContentPresenter, IContextContainer
+    public class ContextContainer : ContentPresenter
     {
     }
 }

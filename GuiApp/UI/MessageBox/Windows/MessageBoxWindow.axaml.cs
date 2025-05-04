@@ -74,11 +74,11 @@ namespace FitsRatingTool.GuiApp.UI.MessageBox.Windows
             AvaloniaXamlLoader.Load(this);
         }
 
-        protected override void OnPropertyChanged<T>(AvaloniaPropertyChangedEventArgs<T> change)
+        protected override void OnPropertyChanged(AvaloniaPropertyChangedEventArgs change)
         {
             base.OnPropertyChanged(change);
 
-            if (change.Property == OwnerProperty && change.NewValue.Value is WindowBase w && w.Topmost)
+            if (change.Property == OwnerProperty && change.NewValue is WindowBase w && w.Topmost)
             {
                 // If parent is topmost then so must the message box, otherwise
                 // the user may not be able to see or interact with the dialog
@@ -86,7 +86,7 @@ namespace FitsRatingTool.GuiApp.UI.MessageBox.Windows
             }
         }
 
-        protected override void OnClosing(CancelEventArgs e)
+        protected override void OnClosing(WindowClosingEventArgs e)
         {
             base.OnClosing(e);
 

@@ -24,7 +24,7 @@ using System;
 using FitsRatingTool.GuiApp.UI.FitsImage.ViewModels;
 using Avalonia.Controls.PanAndZoom;
 using Avalonia.Media;
-using Avalonia.Visuals.Media.Imaging;
+using Avalonia.Media.Imaging;
 using Avalonia;
 using static FitsRatingTool.GuiApp.UI.FitsImage.IFitsImageSectionViewerViewModel;
 using System.Reactive.Disposables;

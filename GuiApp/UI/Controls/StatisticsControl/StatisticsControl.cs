@@ -22,11 +22,13 @@ using Avalonia.Input;
 using Avalonia.Threading;
 using Avalonia.VisualTree;
 using System;
+using Avalonia.Controls;
+using Avalonia.Controls.Presenters;
 using FitsRatingTool.GuiApp.UI.Controls.ContextualItemsControl;
 
 namespace FitsRatingTool.GuiApp.UI.Controls.StatisticsControl
 {
-    public class StatisticsControl : ContextualItemsControl<IStatisticsContextContainer, StatisticsContextContainer>
+    public class StatisticsControl : ContextualItemsControl<StatisticsContextContainer, StatisticsContextContainer>, ISelectable
     {
         public static readonly StyledProperty<string?> DataKeyProperty = AvaloniaProperty.Register<StatisticsControl, string?>(nameof(DataKey));
 
@@ -71,62 +73,63 @@ namespace FitsRatingTool.GuiApp.UI.Controls.StatisticsControl
             AffectsArrange<StatisticsControl>(DataKeyProperty, ScalingModeProperty, GraphMinProperty, GraphMaxProperty);
         }
 
-        protected static void BindContainerValueToDataKey(IStatisticsContextContainer container, string? dataKey)
+        private static void BindContainerValueToDataKey(StatisticsContextContainer container, string? dataKey)
         {
             container.BindToDataKey(dataKey);
         }
 
-        protected virtual void DataKeyChanged(AvaloniaPropertyChangedEventArgs e)
+        private void DataKeyChanged(AvaloniaPropertyChangedEventArgs e)
         {
             string? newDataKey = (string?)e.NewValue;
 
             foreach (var child in LogicalChildren)
             {
-                if (child is IStatisticsContextContainer container)
+                if (child is StatisticsContextContainer container)
                 {
                     BindContainerValueToDataKey(container, newDataKey);
                 }
             }
         }
+        // TODO: Find a way to convert this methods ito avalonia 11.3.0
+        //
+        // protected override void OnContainersMaterialized(ItemContainerEventArgs e)
+        // {
+        //     base.OnContainersMaterialized(e);
+        //
+        //     var dataKey = DataKey;
+        //
+        //     foreach (var info in e.Containers)
+        //     {
+        //         if (info.ContainerControl is StatisticsContextContainer container)
+        //         {
+        //             BindContainerValueToDataKey(container, dataKey);
+        //         }
+        //     }
+        //
+        //     if (!isContextDirty)
+        //     {
+        //         isContextDirty = true;
+        //         InvalidateArrange();
+        //     }
+        // }
 
-        protected override void OnContainersMaterialized(ItemContainerEventArgs e)
-        {
-            base.OnContainersMaterialized(e);
-
-            var dataKey = DataKey;
-
-            foreach (var info in e.Containers)
-            {
-                if (info.ContainerControl is IStatisticsContextContainer container)
-                {
-                    BindContainerValueToDataKey(container, dataKey);
-                }
-            }
-
-            if (!isContextDirty)
-            {
-                isContextDirty = true;
-                InvalidateArrange();
-            }
-        }
-
-        protected override void OnContainersDematerialized(ItemContainerEventArgs e)
-        {
-            base.OnContainersDematerialized(e);
-
-            foreach (var info in e.Containers)
-            {
-                if (info.ContainerControl is IStatisticsContextContainer container)
-                {
-                    // Dispose the binding
-                    BindContainerValueToDataKey(container, null);
-                }
-            }
-        }
+        // protected override void OnContainersDematerialized(ItemContainerEventArgs e)
+        // {
+        //     base.OnContainersDematerialized(e);
+        //
+        //     foreach (var info in e.Containers)
+        //     {
+        //         if (info.ContainerControl is StatisticsContextContainer container)
+        //         {
+        //             // Dispose the binding
+        //             BindContainerValueToDataKey(container, null);
+        //         }
+        //     }
+        // }
 
         protected override Size ArrangeOverride(Size finalSize)
         {
-            finalSize = base.ArrangeOverride(finalSize);
+            // finalSize = base.ArrangeOverride(finalSize);
             if (isContextDirty || prevSize.HasValue && !prevSize.Value.NearlyEquals(finalSize))
             {
                 prevSize = finalSize;
@@ -137,14 +140,14 @@ namespace FitsRatingTool.GuiApp.UI.Controls.StatisticsControl
                 {
                     UpdateAllContexts(finalSize);
                     isContextDirty = false;
-                }, DispatcherPriority.Layout);
+                }, DispatcherPriority.Normal);
             }
             return finalSize;
         }
 
-        protected override void OnPropertyChanged<T>(AvaloniaPropertyChangedEventArgs<T> args)
+        protected override void OnPropertyChanged(AvaloniaPropertyChangedEventArgs args)
         {
-            base.OnPropertyChanged(args);
+            // base.OnPropertyChanged(args);
             if (!isContextDirty &&
                 (args.Property == DataKeyProperty
                 || args.Property == ScalingModeProperty
@@ -156,9 +159,9 @@ namespace FitsRatingTool.GuiApp.UI.Controls.StatisticsControl
             }
         }
 
-        protected override void OnContainerPropertyChanged(object? item, int index, IStatisticsContextContainer context, AvaloniaPropertyChangedEventArgs args)
+        protected override void OnContainerPropertyChanged(object? item, int index, StatisticsContextContainer context, AvaloniaPropertyChangedEventArgs args)
         {
-            base.OnContainerPropertyChanged(item, index, context, args);
+            // base.OnContainerPropertyChanged(item, index, context, args);
             if (!isContextDirty &&
                 (args.Property == StatisticsContextContainer.ValueBindingsProperty
                 || args.Property == StatisticsContextContainer.EnabledBindingsProperty
@@ -172,7 +175,7 @@ namespace FitsRatingTool.GuiApp.UI.Controls.StatisticsControl
             }
         }
 
-        protected void UpdateAllContexts(Size size)
+        private void UpdateAllContexts(Size size)
         {
             double minValue = double.MaxValue;
             double maxValue = double.MinValue;
@@ -235,24 +238,24 @@ namespace FitsRatingTool.GuiApp.UI.Controls.StatisticsControl
         /// <inheritdoc/>
         protected override void OnGotFocus(GotFocusEventArgs e)
         {
-            base.OnGotFocus(e);
+            // base.OnGotFocus(e);
 
             if (e.NavigationMethod == NavigationMethod.Directional)
             {
                 e.Handled = UpdateSelectionFromEventSource(
                     e.Source,
                     true,
-                    e.KeyModifiers.HasAllFlags(KeyModifiers.Shift),
-                    e.KeyModifiers.HasAllFlags(KeyModifiers.Control));
+                    e.KeyModifiers.HasFlag(KeyModifiers.Shift),
+                    e.KeyModifiers.HasFlag(KeyModifiers.Control));
             }
         }
 
         /// <inheritdoc/>
         protected override void OnPointerPressed(PointerPressedEventArgs e)
         {
-            base.OnPointerPressed(e);
+            // base.OnPointerPressed(e);
 
-            if (e.Source is IVisual source)
+            if (e.Source is Visual source)
             {
                 var point = e.GetCurrentPoint(source);
 
@@ -261,12 +264,14 @@ namespace FitsRatingTool.GuiApp.UI.Controls.StatisticsControl
                     e.Handled = UpdateSelectionFromEventSource(
                         e.Source,
                         true,
-                        e.KeyModifiers.HasAllFlags(KeyModifiers.Shift),
-                        e.KeyModifiers.HasAllFlags(KeyModifiers.Control),
+                        e.KeyModifiers.HasFlag(KeyModifiers.Shift),
+                        e.KeyModifiers.HasFlag(KeyModifiers.Control),
                         point.Properties.IsRightButtonPressed);
                 }
             }
         }
         #endregion
+
+        public bool IsSelected { get; set; }
     }
 }

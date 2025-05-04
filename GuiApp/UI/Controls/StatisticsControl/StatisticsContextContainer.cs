@@ -21,11 +21,13 @@ using Avalonia.Controls.Mixins;
 using Avalonia.Data;
 using System;
 using System.Collections.Generic;
+using Avalonia.Controls;
+using CommunityToolkit.Mvvm.ComponentModel;
 using FitsRatingTool.GuiApp.UI.Controls.ContextualItemsControl;
 
 namespace FitsRatingTool.GuiApp.UI.Controls.StatisticsControl
 {
-    public class StatisticsContextContainer : ContextContainer, IStatisticsContextContainer
+    public class StatisticsContextContainer : ContextContainer, ISelectable
     {
         #region +++ Input Bindings +++
         public static readonly DirectProperty<StatisticsContextContainer, Dictionary<string, IBinding>> ValueBindingsProperty =
@@ -53,7 +55,7 @@ namespace FitsRatingTool.GuiApp.UI.Controls.StatisticsControl
             get => _enabledBindings;
             set => SetAndRaise(ValueBindingsProperty, ref _enabledBindings, value);
         }
-
+        
         private object? _inputValue;
         public object? InputValue
         {
@@ -261,17 +263,17 @@ namespace FitsRatingTool.GuiApp.UI.Controls.StatisticsControl
             enabledBindingDisposable = null;
         }
 
-        protected override void OnPropertyChanged<T>(AvaloniaPropertyChangedEventArgs<T> change)
+        protected override void OnPropertyChanged(AvaloniaPropertyChangedEventArgs change)
         {
             base.OnPropertyChanged(change);
 
             if (change.Property == InputValueProperty)
             {
-                Value = change.NewValue.Value;
+                Value = change.NewValue;
             }
             else if (change.Property == InputEnabledProperty)
             {
-                Enabled = Convert.ToBoolean(change.NewValue.Value);
+                Enabled = Convert.ToBoolean(change.NewValue);
             }
         }
     }

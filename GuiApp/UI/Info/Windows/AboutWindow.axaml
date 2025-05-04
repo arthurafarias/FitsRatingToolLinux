@@ -75,7 +75,7 @@ Public License 3.
     </StackPanel>
     <StackPanel Grid.Row="2">
       <ItemsPresenter>
-        <ItemsPresenter.Items>
+        <ListBox.Items>
           <collections:List x:TypeArguments="sys:String">
             <sys:String>This product is based on software from the PixInsight project, developed by Pleiades Astrophoto and its contributors (http://pixinsight.com/).</sys:String>
             <sys:String>CFITSIO (https://heasarc.gsfc.nasa.gov/fitsio/).</sys:String>
@@ -95,13 +95,13 @@ Public License 3.
             <sys:String>Icons by Icons8 (https://icons8.com).</sys:String>
             <sys:String>.NET (https://github.com/dotnet/runtime).</sys:String>
           </collections:List>
-        </ItemsPresenter.Items>
+        </ListBox.Items>
         <ItemsPresenter.ItemsPanel>
           <ItemsPanelTemplate>
             <StackPanel Spacing="2"/>
           </ItemsPanelTemplate>
         </ItemsPresenter.ItemsPanel>
-        <ItemsPresenter.ItemTemplate>
+        <ListBox.ItemTemplate>
           <DataTemplate>
             <StackPanel Orientation="Horizontal">
               <Ellipse Width="3" Height="3"
@@ -118,7 +118,7 @@ Public License 3.
                        Padding="2 1 2 1"/>
             </StackPanel>
           </DataTemplate>
-        </ItemsPresenter.ItemTemplate>
+        </ListBox.ItemTemplate>
       </ItemsPresenter>
     </StackPanel>
     <StackPanel Grid.Row="3" Margin="0 5 0 0">

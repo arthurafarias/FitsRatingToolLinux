@@ -25,11 +25,6 @@ namespace FitsRatingTool.GuiApp.UI.Exporters.Views
     {
         public FitsHeaderExporterConfiguratorView()
         {
-            InitializeComponent();
-        }
-
-        private void InitializeComponent()
-        {
             AvaloniaXamlLoader.Load(this);
         }
     }

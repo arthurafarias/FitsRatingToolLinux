@@ -102,7 +102,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
               Command="{Binding AddConstant}"
               IsEnabled="{Binding !IsReadOnly}"/>
       <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Hidden">
-        <ItemsControl Items="{Binding Constants}">
+        <ItemsControl ItemsSource="{Binding Constants}">
           <ItemsControl.ItemTemplate>
             <DataTemplate>
               <Grid ColumnDefinitions="Auto,10,*,4,Auto" RowDefinitions="Auto,2,Auto" Margin="0 1 0 4">

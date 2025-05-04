@@ -58,7 +58,7 @@ namespace FitsRatingTool.GuiApp.UI.Exporters.Views
             base.OnAttachedToLogicalTree(e);
         }
 
-        private async Task ShowOpenFileDialogAsync(InteractionContext<string, string> ctx)
+        private async Task ShowOpenFileDialogAsync(IInteractionContext<string, string> ctx)
         {
             if (window != null)
             {
@@ -91,7 +91,7 @@ namespace FitsRatingTool.GuiApp.UI.Exporters.Views
             }
         }
 
-        private async Task ShowSaveFileDialogAsync(InteractionContext<string, string> ctx)
+        private async Task ShowSaveFileDialogAsync(IInteractionContext<string, string> ctx)
         {
             if (window != null)
             {

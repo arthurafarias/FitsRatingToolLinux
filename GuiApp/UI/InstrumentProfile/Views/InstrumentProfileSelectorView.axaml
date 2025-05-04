@@ -24,7 +24,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
              mc:Ignorable="d"
              x:Class="FitsRatingTool.GuiApp.UI.InstrumentProfile.Views.InstrumentProfileSelectorView">
 
-  <ComboBox Items="{Binding Profiles}" SelectedItem="{Binding SelectedProfile}"
+  <ComboBox ItemsSource="{Binding Profiles}" SelectedItem="{Binding SelectedProfile}"
             VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
     <ComboBox.ItemTemplate>
       <DataTemplate DataType="vm:InstrumentProfileViewModel">

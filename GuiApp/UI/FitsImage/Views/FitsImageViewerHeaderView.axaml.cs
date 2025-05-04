@@ -25,11 +25,6 @@ namespace FitsRatingTool.GuiApp.UI.FitsImage.Views
     {
         public FitsImageViewerHeaderView()
         {
-            InitializeComponent();
-        }
-
-        private void InitializeComponent()
-        {
             AvaloniaXamlLoader.Load(this);
         }
     }

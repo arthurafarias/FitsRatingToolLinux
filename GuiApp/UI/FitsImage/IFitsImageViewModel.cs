@@ -17,7 +17,7 @@
 */
 
 using Avalonia.Media.Imaging;
-using Avalonia.Visuals.Media.Imaging;
+using Avalonia.Media.Imaging;
 using FitsRatingTool.Common.Models.FitsImage;
 using ReactiveUI;
 using System;

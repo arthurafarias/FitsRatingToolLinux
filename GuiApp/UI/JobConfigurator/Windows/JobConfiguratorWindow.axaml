@@ -153,7 +153,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
               <ScrollViewer Grid.Row="12"
                             IsVisible="{Binding IsFilteredByGrouping}"
                             VerticalScrollBarVisibility="Hidden">
-                <ItemsControl Items="{Binding GroupingFilters}">
+                <ItemsControl ItemsSource="{Binding GroupingFilters}">
                   <ItemsControl.ItemTemplate>
                     <DataTemplate>
                       <Grid ColumnDefinitions="Auto,10,*,4,Auto" RowDefinitions="Auto,2,Auto" Margin="0 1 0 4">

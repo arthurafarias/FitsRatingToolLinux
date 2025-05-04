@@ -22,8 +22,8 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
   <Design.PreviewWith>
     <Border Padding="100" Background="#FF555555">
       <StackPanel Spacing="10">
-        <ComboBox Width="150" Items="ABC" IsEnabled="True"/>
-        <ComboBox Width="150" Items="ABC" IsEnabled="False"/>
+        <ComboBox Width="150" ItemsSource="ABC" IsEnabled="True"/>
+        <ComboBox Width="150" ItemsSource="ABC" IsEnabled="False"/>
       </StackPanel>
     </Border>
   </Design.PreviewWith>
@@ -174,12 +174,18 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
                       BoxShadow="2 2 5 0 #90000000">
                 <ScrollViewer HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}"
                               VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}">
-                  <ItemsPresenter Name="PART_ItemsPresenter"
-                                  Items="{TemplateBinding Items}"
+                  <!-- <ItemsPresenter Name="PART_ItemsPresenter" -->
+                  <!--                 ItemsSource="{TemplateBinding Items}" -->
+                  <!--                 Margin="{DynamicResource ComboBoxDropdownContentMargin}" -->
+                  <!--                 ItemsPanel="{TemplateBinding ItemsPanel}" -->
+                  <!--                 ItemTemplate="{TemplateBinding ItemTemplate}" -->
+                  <!--                 VirtualizationMode="{TemplateBinding VirtualizationMode}" /> -->
+                  
+                  <ListBox Name="PART_ItemsPresenter"
+                                  ItemsSource="{TemplateBinding Items}"
                                   Margin="{DynamicResource ComboBoxDropdownContentMargin}"
                                   ItemsPanel="{TemplateBinding ItemsPanel}"
-                                  ItemTemplate="{TemplateBinding ItemTemplate}"
-                                  VirtualizationMode="{TemplateBinding VirtualizationMode}" />
+                                  ItemTemplate="{TemplateBinding ItemTemplate}" />
                 </ScrollViewer>
               </Border>
             </Popup>

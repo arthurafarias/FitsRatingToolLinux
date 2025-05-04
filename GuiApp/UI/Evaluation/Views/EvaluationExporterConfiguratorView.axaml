@@ -32,7 +32,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
     <ComboBox Grid.Row="0" Grid.Column="2"
               HorizontalAlignment="Stretch"
               Margin="0 2"
-              Items="{Binding ExporterConfiguratorFactories}"
+              ItemsSource="{Binding ExporterConfiguratorFactories}"
               SelectedItem="{Binding SelectedExporterConfiguratorFactory}">
       <ComboBox.DataTemplates>
         <DataTemplate>

@@ -29,7 +29,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
       <StackPanel Spacing="6">
         <TextBlock Text="Selected grouping keys"
                    FontWeight="UltraBlack"/>
-        <ItemsPresenter Items="{Binding GroupingKeys}">
+        <ItemsPresenter ItemsSource="{Binding GroupingKeys}">
           <ItemsPresenter.ItemsPanel>
             <ItemsPanelTemplate>
               <StackPanel Spacing="2"/>

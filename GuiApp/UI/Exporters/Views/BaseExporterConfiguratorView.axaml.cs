@@ -49,7 +49,7 @@ namespace FitsRatingTool.GuiApp.UI.Exporters.Views
             base.OnAttachedToLogicalTree(e);
         }
 
-        private async Task ShowSaveFileDialogAsync(InteractionContext<IBaseExporterConfiguratorViewModel.FileExtension, string> ctx)
+        private async Task ShowSaveFileDialogAsync(IInteractionContext<IBaseExporterConfiguratorViewModel.FileExtension, string> ctx)
         {
             if (window != null)
             {

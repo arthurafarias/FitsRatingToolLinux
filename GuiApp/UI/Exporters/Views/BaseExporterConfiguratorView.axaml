@@ -76,7 +76,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
           <Binding Path="UsesExportVariables"/>
         </MultiBinding>
       </ScrollViewer.IsVisible>
-      <ItemsControl Items="{Binding ExportVariablesFilter}">
+      <ItemsControl ItemsSource="{Binding ExportVariablesFilter}">
         <ItemsControl.ItemTemplate>
           <DataTemplate>
             <Grid ColumnDefinitions="*,4,Auto" RowDefinitions="*" Margin="0 1">

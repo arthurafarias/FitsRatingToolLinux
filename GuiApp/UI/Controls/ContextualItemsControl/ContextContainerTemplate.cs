@@ -23,7 +23,7 @@ using Avalonia.Styling;
 
 namespace FitsRatingTool.GuiApp.UI.Controls.ContextualItemsControl
 {
-    public class ContextContainerTemplate<T> : ITemplate<T> where T : IContextContainer
+    public class ContextContainerTemplate<T> : ITemplate<T> where T : ContextContainer
     {
 #pragma warning disable CS8618, CS8600, CS8603
         [Content]
@@ -31,7 +31,7 @@ namespace FitsRatingTool.GuiApp.UI.Controls.ContextualItemsControl
         public object Content { get; set; }
 
 
-        public T Build() => (T)TemplateContent.Load(Content)?.Control;
+        public T Build() => (T)TemplateContent.Load(Content)?.Result;
 
         object ITemplate.Build() => Build();
 #pragma warning restore CS8618, CS8600, CS8603

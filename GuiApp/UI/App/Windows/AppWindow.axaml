@@ -234,7 +234,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
                   Classes="themed inner"
                   Margin="-2 -2 -2 -2"
                   Padding="4">
-            <ListBox Items="{Binding Items}"
+            <ListBox ItemsSource="{Binding Items}"
                      SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
                      ScrollViewer.VerticalScrollBarVisibility="Visible"
                      Background="Transparent">

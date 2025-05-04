@@ -25,11 +25,6 @@ namespace FitsRatingTool.GuiApp.UI.AppConfig.Views
     {
         public InstrumentProfileSettingView()
         {
-            InitializeComponent();
-        }
-
-        private void InitializeComponent()
-        {
             AvaloniaXamlLoader.Load(this);
         }
     }

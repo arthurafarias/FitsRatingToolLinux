@@ -25,11 +25,6 @@ namespace FitsRatingTool.GuiApp.UI.AppConfig.Views
     {
         public SettingSeparatorView()
         {
-            InitializeComponent();
-        }
-
-        private void InitializeComponent()
-        {
             AvaloniaXamlLoader.Load(this);
         }
     }

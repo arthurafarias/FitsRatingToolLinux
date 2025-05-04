@@ -32,7 +32,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
                 GridLinesVisibility="Vertical"
                 SelectedItem="{Binding SelectedRecord}"
                 SelectionMode="Extended">
-        <DataGrid.Items>ABC</DataGrid.Items>
+        <DataGrid.ItemsSource>ABC</DataGrid.ItemsSource>
         <DataGrid.Columns>
           <DataGridTextColumn Header="Header 1" Binding="{Binding .}"/>
           <DataGridTextColumn Header="Header 2" Binding="{Binding .}"/>

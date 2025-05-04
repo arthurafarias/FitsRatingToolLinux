@@ -26,6 +26,7 @@ using Avalonia.Input;
 using Avalonia.Interactivity;
 using Avalonia.Utilities;
 using System;
+using Avalonia.Markup.Xaml.Templates;
 
 namespace FitsRatingTool.GuiApp.UI.Controls
 {
@@ -111,10 +112,10 @@ namespace FitsRatingTool.GuiApp.UI.Controls
         }
 
 
-        public static readonly StyledProperty<IControlTemplate?> PrecisionSliderTemplateProperty =
-            AvaloniaProperty.Register<PrecisionSlider, IControlTemplate?>(nameof(Template));
+        public static readonly StyledProperty<ControlTemplate?> PrecisionSliderTemplateProperty =
+            AvaloniaProperty.Register<PrecisionSlider, ControlTemplate?>(nameof(Template));
 
-        public IControlTemplate? PrecisionSliderTemplate
+        public ControlTemplate? PrecisionSliderTemplate
         {
             get { return GetValue(PrecisionSliderTemplateProperty); }
             set { SetValue(PrecisionSliderTemplateProperty, value); }
@@ -133,7 +134,7 @@ namespace FitsRatingTool.GuiApp.UI.Controls
 
         private PrecisionSliderTemplateControl precisionSliderTemplateControl;
 
-        public IControl? PrecisionControl
+        public Control? PrecisionControl
         {
             get;
             private set;
@@ -188,7 +189,7 @@ namespace FitsRatingTool.GuiApp.UI.Controls
             UpdatePseudoClasses();
 
             precisionControlPointerReleaseDispose?.Dispose();
-            PrecisionControl = e.NameScope.Find<IControl>("PART_PrecisionControl");
+            PrecisionControl = e.NameScope.Find<Control>("PART_PrecisionControl");
             if (PrecisionControl != null)
             {
                 precisionControlPointerReleaseDispose = PrecisionControl.AddDisposableHandler(PointerReleasedEvent, PrecisionControlReleased, RoutingStrategies.Tunnel);
@@ -197,7 +198,7 @@ namespace FitsRatingTool.GuiApp.UI.Controls
 
         private void OnPrecisionSliderTemplateControlApplied(object? sender, TemplateAppliedEventArgs args)
         {
-            var newPrecisionControl = args.NameScope.Find<IControl>("PART_PrecisionControl");
+            var newPrecisionControl = args.NameScope.Find<Control>("PART_PrecisionControl");
             if (newPrecisionControl != null)
             {
                 precisionControlPointerReleaseDispose?.Dispose();
@@ -224,7 +225,7 @@ namespace FitsRatingTool.GuiApp.UI.Controls
             if (properties.IsRightButtonPressed || properties.IsMiddleButtonPressed)
             {
                 //Flyout?.ShowAt(this, true);
-                Flyout?.ShowAt(this, false);
+                Flyout?.ShowAt(this);
                 UpdateFlyoutContent();
                 e.Handled = true;
             }
@@ -237,7 +238,7 @@ namespace FitsRatingTool.GuiApp.UI.Controls
             if (properties.IsRightButtonPressed || properties.IsMiddleButtonPressed)
             {
                 //Flyout?.ShowAt(this, true);
-                Flyout?.ShowAt(this, false);
+                Flyout?.ShowAt(this);
                 UpdateFlyoutContent();
                 e.Handled = true;
             }
@@ -253,13 +254,13 @@ namespace FitsRatingTool.GuiApp.UI.Controls
             }
         }
 
-        protected override void OnPropertyChanged<T>(AvaloniaPropertyChangedEventArgs<T> change)
+        protected override void OnPropertyChanged(AvaloniaPropertyChangedEventArgs change)
         {
             base.OnPropertyChanged(change);
 
             if (change.Property == PrecisionValueProperty)
             {
-                if (updatePrecisionDelta && change.NewValue.HasValue && change.OldValue.HasValue)
+                if (updatePrecisionDelta && change.NewValue != null && change.OldValue != null)
                 {
                     var precisionChange = change as AvaloniaPropertyChangedEventArgs<double>;
                     double delta = precisionChange!.NewValue.Value - precisionChange!.OldValue.Value;

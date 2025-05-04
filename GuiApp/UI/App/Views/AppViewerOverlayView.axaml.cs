@@ -32,12 +32,12 @@ namespace FitsRatingTool.GuiApp.UI.App.Views
     {
         public AppViewerOverlayView()
         {
-            InitializeComponent();
+            AvaloniaXamlLoader.Load(this);
         }
 
         public AppViewerOverlayView(IWindowManager windowManager)
         {
-            InitializeComponent();
+            AvaloniaXamlLoader.Load(this);
 
             this.WhenActivated(d =>
             {
@@ -70,11 +70,6 @@ namespace FitsRatingTool.GuiApp.UI.App.Views
                     }));
                 }
             });
-        }
-
-        private void InitializeComponent()
-        {
-            AvaloniaXamlLoader.Load(this);
         }
     }
 }

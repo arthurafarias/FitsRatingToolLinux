@@ -44,7 +44,7 @@ namespace FitsRatingTool.GuiApp.UI.Controls
                 setPosition(s, e.GetPosition(s));
             }, RoutingStrategies.Tunnel | RoutingStrategies.Bubble | RoutingStrategies.Direct, true);
 
-            PointerEnterEvent.AddClassHandler<TopLevel>((s, e) =>
+            PointerEnteredEvent.AddClassHandler<TopLevel>((s, e) =>
             {
                 setPosition(s, e.GetPosition(s));
             }, RoutingStrategies.Tunnel | RoutingStrategies.Bubble | RoutingStrategies.Direct, true);
@@ -56,7 +56,7 @@ namespace FitsRatingTool.GuiApp.UI.Controls
         }
 
         private Popup? popup;
-        private IVisual? placementElement;
+        private Visual? placementElement;
         private TopLevel? positionElement;
 
         public FixedContextMenu()
@@ -76,7 +76,7 @@ namespace FitsRatingTool.GuiApp.UI.Controls
             return new Rect(p, new Size(1, 1));
         }
 
-        protected override void OnPropertyChanged<T>(AvaloniaPropertyChangedEventArgs<T> change)
+        protected override void OnPropertyChanged(AvaloniaPropertyChangedEventArgs change)
         {
             base.OnPropertyChanged(change);
 
@@ -87,7 +87,7 @@ namespace FitsRatingTool.GuiApp.UI.Controls
                     popup.PropertyChanged -= OnPopupPropertyChanged;
                 }
 
-                popup = change.NewValue.Value as Popup;
+                popup = change.NewValue as Popup;
                 placementElement = null;
                 positionElement = null;
 
@@ -95,7 +95,7 @@ namespace FitsRatingTool.GuiApp.UI.Controls
                 {
                     popup.PropertyChanged += OnPopupPropertyChanged;
 
-                    IControl? parent = popup;
+                    StyledElement? parent = popup;
 
                     placementElement = popup.PlacementTarget;
 
@@ -113,9 +113,9 @@ namespace FitsRatingTool.GuiApp.UI.Controls
                 }
             }
 
-            if (change.Property == Popup.PlacementRectProperty && change.NewValue.HasValue && popup != null && !popup.IsOpen)
+            if (change.Property == Popup.PlacementRectProperty && change.NewValue != null && popup != null && !popup.IsOpen)
             {
-                popup.PlacementRect = GetRelativeRect(change.NewValue.GetValueOrDefault(default(Rect)));
+                popup.PlacementRect = GetRelativeRect(((Rect?)change.NewValue) ?? default(Rect));
             }
         }
 

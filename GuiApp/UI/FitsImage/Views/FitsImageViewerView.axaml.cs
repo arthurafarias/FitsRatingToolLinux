@@ -279,11 +279,11 @@ namespace FitsRatingTool.GuiApp.UI.FitsImage.Views
 
                             if (shouldInterpolate)
                             {
-                                image.InterpolationMode = Avalonia.Visuals.Media.Imaging.BitmapInterpolationMode.HighQuality;
+                                image.InterpolationMode = Avalonia.Media.Imaging.BitmapInterpolationMode.HighQuality;
                             }
                             else
                             {
-                                image.InterpolationMode = Avalonia.Visuals.Media.Imaging.BitmapInterpolationMode.Default;
+                                image.InterpolationMode = Avalonia.Media.Imaging.BitmapInterpolationMode.Default;
                             }
                         }
                     }

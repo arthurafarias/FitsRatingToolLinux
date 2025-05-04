@@ -43,6 +43,7 @@ using FitsRatingTool.GuiApp.UI.Info.Windows;
 using Avalonia.Utilities;
 using System.IO;
 using System.Reactive.Concurrency;
+using Avalonia.Markup.Xaml;
 using FitsRatingTool.GuiApp.UI.AppConfig.Windows;
 using FitsRatingTool.GuiApp.UI.InstrumentProfile.Windows;
 
@@ -56,7 +57,7 @@ namespace FitsRatingTool.GuiApp.UI.App.Windows
 
         public AppWindow(IWindowManager windowManager, IOpenFileEventManager openFileEventManager)
         {
-            InitializeComponent();
+            AvaloniaXamlLoader.Load(this);
 #if DEBUG
             this.AttachDevTools();
 #endif
@@ -333,7 +334,7 @@ namespace FitsRatingTool.GuiApp.UI.App.Windows
             }
         }
 
-        private async Task ShowLoadImagesDialogAsync(InteractionContext<Unit, IEnumerable<string>> ctx)
+        private async Task ShowLoadImagesDialogAsync(IInteractionContext<Unit, IEnumerable<string>> ctx)
         {
             OpenFileDialog dialog = new()
             {
@@ -346,7 +347,7 @@ namespace FitsRatingTool.GuiApp.UI.App.Windows
             ctx.SetOutput(files != null ? files.ToList() : new());
         }
 
-        private async Task ShowLoadImagesProgressDialogAsync(InteractionContext<IFitsImageLoadProgressViewModel, Unit> ctx)
+        private async Task ShowLoadImagesProgressDialogAsync(IInteractionContext<IFitsImageLoadProgressViewModel, Unit> ctx)
         {
             var window = new FitsImageLoadProgressWindow()
             {
@@ -358,7 +359,7 @@ namespace FitsRatingTool.GuiApp.UI.App.Windows
             ctx.SetOutput(Unit.Default);
         }
 
-        private async Task ShowStatisticsProgressDialogAsync(InteractionContext<IFitsImageStatisticsProgressViewModel, Unit> ctx)
+        private async Task ShowStatisticsProgressDialogAsync(IInteractionContext<IFitsImageStatisticsProgressViewModel, Unit> ctx)
         {
             var window = new FitsImageStatisticsProgressWindow()
             {
@@ -370,7 +371,7 @@ namespace FitsRatingTool.GuiApp.UI.App.Windows
             ctx.SetOutput(Unit.Default);
         }
 
-        private async Task ShowAllStatisticsProgressDialogAsync(InteractionContext<IFitsImageAllStatisticsProgressViewModel, Unit> ctx)
+        private async Task ShowAllStatisticsProgressDialogAsync(IInteractionContext<IFitsImageAllStatisticsProgressViewModel, Unit> ctx)
         {
             var window = new FitsImageAllStatisticsProgressWindow()
             {
@@ -382,7 +383,7 @@ namespace FitsRatingTool.GuiApp.UI.App.Windows
             ctx.SetOutput(Unit.Default);
         }
 
-        private async Task ShowJobConfiguratorOpenFileDialogAsync(InteractionContext<Unit, string> ctx)
+        private async Task ShowJobConfiguratorOpenFileDialogAsync(IInteractionContext<Unit, string> ctx)
         {
             OpenFileDialog dialog = new()
             {

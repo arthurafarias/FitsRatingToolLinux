@@ -25,11 +25,6 @@ namespace FitsRatingTool.GuiApp.UI.JobConfigurator.Views
     {
         public JobGroupingConfigurationHelpView()
         {
-            InitializeComponent();
-        }
-
-        private void InitializeComponent()
-        {
             AvaloniaXamlLoader.Load(this);
         }
     }

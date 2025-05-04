@@ -184,7 +184,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
                     Classes="themed inner">
               <ListBox ScrollViewer.VerticalScrollBarVisibility="Auto"
                        ScrollViewer.HorizontalScrollBarVisibility="Auto"
-                       Items="{Binding GroupKeys}"
+                       ItemsSource="{Binding GroupKeys}"
                        MinHeight="21"
                        MaxHeight="105"
                        Background="Transparent">

@@ -23,7 +23,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
     <Border Padding="200">
       <StackPanel Spacing="10"
                   Width="150">
-        <controls:ScrollableTabControl Items="ABCDEFG" Padding="10"/>
+        <controls:ScrollableTabControl ItemsSource="ABCDEFG" Padding="10"/>
       </StackPanel>
     </Border>
   </Design.PreviewWith>
@@ -124,11 +124,12 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
                     <Flyout Placement="BottomEdgeAlignedLeft"
                             Flyout.FlyoutPresenterClasses="scrollMenuFlyoutPresenter"
                             ShowMode="TransientWithDismissOnPointerMoveAway">
-                      <ItemsPresenter Items="{Binding $parent[controls:ScrollableTabControl].Items}"
-                                      ScrollViewer.VerticalScrollBarVisibility="Disabled"
-                                      ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                      
+                      <ListBox ItemsSource="{Binding $parent[controls:ScrollableTabControl].Items}"
+                               ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                               ScrollViewer.HorizontalScrollBarVisibility="Disabled">
 
-                        <ItemsPresenter.Styles>
+                        <ListBox.Styles>
                           <Style Selector="Button.scrollMenuButton">
                             <Setter Property="Transitions"/>
                             <Setter Property="BorderThickness" Value="0"/>
@@ -146,9 +147,9 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
                             </Setter>
                             <Setter Property="Padding" Value="5 3 4 3"/>
                           </Style>
-                        </ItemsPresenter.Styles>
+                        </ListBox.Styles>
 
-                        <ItemsPresenter.ItemTemplate>
+                        <ListBox.ItemTemplate>
                           <DataTemplate>
                             <Button Classes="scrollMenuButton"
                                     MinHeight="15"
@@ -159,9 +160,9 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
                                               ContentTemplate="{Binding $parent[controls:ScrollableTabControl].ItemTemplate}"/>
                             </Button>
                           </DataTemplate>
-                        </ItemsPresenter.ItemTemplate>
+                        </ListBox.ItemTemplate>
 
-                      </ItemsPresenter>
+                      </ListBox>
                     </Flyout>
                   </Button.Flyout>
                 </Button>
@@ -227,11 +228,11 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
                             HorizontalScrollBarVisibility="Hidden"
                             VerticalScrollBarVisibility="Disabled"
                             Margin="0 0 0 -3">
-                <ItemsPresenter Name="PART_ItemsPresenter"
-                                Items="{TemplateBinding Items}"
-                                ItemsPanel="{TemplateBinding ItemsPanel}"
-                                ItemTemplate="{TemplateBinding ItemTemplate}"
-                                Margin="2"/>
+                <ListBox Name="PART_ItemsPresenter"
+                         ItemsSource="{TemplateBinding Items}"
+                         ItemsPanel="{TemplateBinding ItemsPanel}"
+                         ItemTemplate="{TemplateBinding ItemTemplate}"
+                         Margin="2"/>
               </ScrollViewer>
             </Grid>
 

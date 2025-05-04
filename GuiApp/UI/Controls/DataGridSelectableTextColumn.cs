@@ -47,7 +47,7 @@ namespace FitsRatingTool.GuiApp.UI.Controls
             IsReadOnly = false;
         }
 
-        protected override IControl GenerateEditingElementDirect(DataGridCell cell, object dataItem)
+        protected override Control GenerateEditingElementDirect(DataGridCell cell, object dataItem)
         {
             var textBox = new TextBox
             {
@@ -55,7 +55,7 @@ namespace FitsRatingTool.GuiApp.UI.Controls
                 Background = new SolidColorBrush(Colors.Transparent),
                 IsReadOnly = true,
                 Margin = TextBoxMargin,
-                Classes = Classes.Parse(TextBoxClasses)
+                // Classes = Classes.Parse(TextBoxClasses)
             };
 
             SyncProperties(textBox);

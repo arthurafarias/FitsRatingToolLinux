@@ -55,7 +55,7 @@ namespace FitsRatingTool.GuiApp.UI.AppConfig.Views
             base.OnAttachedToLogicalTree(e);
         }
 
-        private async Task ShowOpenDialogAsync(InteractionContext<IPathProperties, string> ctx)
+        private async Task ShowOpenDialogAsync(IInteractionContext<IPathProperties, string> ctx)
         {
             if (window != null)
             {

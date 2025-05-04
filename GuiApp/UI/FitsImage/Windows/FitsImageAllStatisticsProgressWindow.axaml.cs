@@ -23,6 +23,7 @@ using ReactiveUI;
 using System;
 using System.ComponentModel;
 using System.Reactive.Disposables;
+using Avalonia.Controls;
 using FitsRatingTool.GuiApp.UI.FitsImage.ViewModels;
 
 namespace FitsRatingTool.GuiApp.UI.FitsImage.Windows
@@ -56,7 +57,7 @@ namespace FitsRatingTool.GuiApp.UI.FitsImage.Windows
             AvaloniaXamlLoader.Load(this);
         }
 
-        protected override void OnClosing(CancelEventArgs e)
+        protected override void OnClosing(WindowClosingEventArgs e)
         {
             base.OnClosing(e);
 

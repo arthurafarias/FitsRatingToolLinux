@@ -20,7 +20,7 @@ using FitsRatingTool.GuiApp.UI.Controls.ContextualItemsControl;
 
 namespace FitsRatingTool.GuiApp.UI.Controls.StatisticsControl
 {
-    public class StatisticsContextContainerTemplate : ContextContainerTemplate<IStatisticsContextContainer>
+    public class StatisticsContextContainerTemplate : ContextContainerTemplate<StatisticsContextContainer>
     {
     }
 }
